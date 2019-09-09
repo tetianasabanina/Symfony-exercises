@@ -7,8 +7,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 use Symfony\Component\Routing\Annotation\Route;
 
+//Tarvitaan näkymä varten
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class EsimerkitController{
+
+class EsimerkitController extends AbstractController{
     // Kontrollerit tulee tänne
 
     public function laskePalkka(){
@@ -65,8 +68,47 @@ class EsimerkitController{
  * @Route("esimerkki/esim6")
  * 
  */
-    public function laskePakkasastet(){
-    
+    public function laskePakkasasteet(){
+        // Muuttujat
+        $summa = 0;
+        $pakkaspaivat = 0;
+        $tekija = "Arto Haapanen";
+        $mittausViikko = 35;
+        $keskiarvo1 = 0;
+        $keskiarvo2 = 0;
+
+        // Talletetaan viikon lämpötilat taulukkoon
+        $pakkasasteet = [
+            'ma' => 6,
+            'ti' => 3,
+            'ke' => -2,
+            'to' => -4,
+            'pe' => 1,
+            'la' => 0,
+            'su' => -5
+        ];
+        
+        // Lasketaan pakkaspäivien summa
+        foreach ($pakkasasteet as $pakkasaste) {
+            if ($pakkasaste < 0) {
+                $summa += $pakkasaste;
+                $pakkaspaivat += 1;
+            }
+        }
+        // Lasketaan pakkauspäivien keskiarvo yhdellä desimaalilla
+        $keskiarvo1 = number_format(($summa / $pakkaspaivat), 1);
+
+        // lasketaan koko viikon keskilämpötilä yhdellä desimaalilla
+        $keskiarvo2 = number_format(array_sum($pakkasasteet) / count($pakkasasteet),1);
+
+        // Kutsutaan näkymää ja lähetetään sille dataa sisältävät muuttujat
+        return $this->render('esimerkit/pakkasasteet.html.twig',[
+            'pakkasasteet' => $pakkasasteet,
+            'keskiarvo1' => $keskiarvo1,
+            'keskiarvo2' => $keskiarvo2,
+            'viikko' => $mittausViikko,
+            'tekija' => $tekija
+            ]);
     }
 }
 
