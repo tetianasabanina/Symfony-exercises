@@ -49,8 +49,10 @@ class EsimerkitController{
     public function lihapiirakka(){
         $rahat = 10;
         $hinta = 2.5; 
-        if ($rahat > $hinta){
-            $vastaus = "Sinulla on rahamäärä " . round($rahat/$hinta) . ':n piirakkaan.';
+        if ($rahat >= $hinta){
+
+            $vastaus = "Sinulla on rahamäärä " . round($rahat/$hinta) . ':n piirakkaan. Sinun lompakolla nyt on ' . $rahat;
+            $rahat -= $hinta;
         } else {
             $vastaus = "Sinun täytyy paastota";
         }
