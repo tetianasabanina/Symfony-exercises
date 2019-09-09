@@ -65,8 +65,7 @@ class EsimerkitController extends AbstractController{
     }
 
 /**
- * @Route("esimerkki/esim6")
- * 
+ * @Route("pakkasasteet")
  */
     public function laskePakkasasteet(){
         // Muuttujat
