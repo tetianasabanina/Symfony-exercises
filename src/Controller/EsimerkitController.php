@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+use Symfony\Component\Routing\Annotation\Route;
+
 
 class EsimerkitController{
     // Kontrollerit tulee tänne
@@ -58,6 +60,14 @@ class EsimerkitController{
         }
         return new Response('<h2>' . $vastaus . '</h2>');
     }
+
+    /**
+ * @Route("esimerkki/esim6")
+ * 
+ */
+/*public function laskePakkasastet(){
+    
+}*/
 }
 
 
