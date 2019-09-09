@@ -61,13 +61,13 @@ class EsimerkitController{
         return new Response('<h2>' . $vastaus . '</h2>');
     }
 
-    /**
+/**
  * @Route("esimerkki/esim6")
  * 
  */
-/*public function laskePakkasastet(){
+    public function laskePakkasastet(){
     
-}*/
+    }
 }
 
 

@@ -26,5 +26,9 @@ lihapiirakka:
     path: /lihapiirakka
     controller: App\Controller\EsimerkitController::lihapiirakka
 
+packagedates:
+    path: /packagedates
+    controller: App\Controller\EsimerkitController::laskePakkausPaivat
+
 
 
