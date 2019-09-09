@@ -27,7 +27,7 @@ class EsimerkitController extends AbstractController{
         }else{
             $vastaus = " ei ole karkaus";
         }
-        return new Response('<h2>Vuosi '. 2019 . '<strong>' . $vastaus . ' vuosi</strong>' );
+        return new Response('<h2>Vuosi '. 2019 . '<strong>' . $vastaus . 'vuosi.</strong></h2>' );
     }
 
     public function laskePH(){
@@ -56,7 +56,7 @@ class EsimerkitController extends AbstractController{
         $hinta = 2.5; 
         if ($rahat >= $hinta){
 
-            $vastaus = "Sinulla on rahamäärä " . round($rahat/$hinta) . ':n piirakkaan. Sinun lompakolla nyt on ' . $rahat;
+            $vastaus = "Sinulla on rahamäärä " . round($rahat/$hinta) . ':n piirakkaan. Sinun lompakossa nyt on ' . $rahat;
             $rahat -= $hinta;
         } else {
             $vastaus = "Sinun täytyy paastota";
