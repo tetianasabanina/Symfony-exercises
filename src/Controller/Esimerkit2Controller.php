@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 //Tarvitaan näkymä varten
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+// Harjoitukset Symfony 7, 8, 9
 
 class Esimerkit2Controller extends AbstractController{
     // Kontrollerit tulee tänne

@@ -8,3 +8,38 @@ Ma: {{ pakkasasteet['la'] }}<sup>o</sup>C <br>
 Ma: {{ pakkasasteet['su'] }}<sup>o</sup>C <br>
 Pakkaspäivät (ka): {{ keskiarvo1}}<sup>o</sup>C <br>
 Koko viikko (ka): {{ keskiarvo2}}<sup>o</sup>C <br>
+
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Viikko</th>
+      <th scope="col">Ma</th>
+      <th scope="col">Ti</th>
+      <th scope="col">Ke</th>
+      <th scope="col">To</th>
+      <th scope="col">Pe</th>
+      <th scope="col">La</th>
+      <th scope="col">Su</th>
+      <th scope="col">Ka(pp)</th>
+      <th scope="col">Ka(viikko)</th>
+      <th scope="col">Toiminnot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{viikko}}</th>
+      <td>{{ pakkasasteet['ma'] }}<sup>o</sup>C</td>
+      <td>{{ pakkasasteet['ti'] }}<sup>o</sup>C</td>
+      <td>{{ pakkasasteet['ke'] }}<sup>o</sup>C</td>
+      <td>{{ pakkasasteet['to'] }}<sup>o</sup>C</td>
+      <td>{{ pakkasasteet['pe'] }}<sup>o</sup>C</td>
+      <td>{{ pakkasasteet['la'] }}<sup>o</sup>C</td>
+      <td>{{ pakkasasteet['su'] }}<sup>o</sup>C</td>
+      <td>{{ keskiarvo1}}<sup>o</sup>C</td>
+      <td>{{ keskiarvo2}}<sup>o</sup>C</td>
+      <td>toiminnot</td>
+    </tr>
+  </tbody>
+</table>
+</div>
