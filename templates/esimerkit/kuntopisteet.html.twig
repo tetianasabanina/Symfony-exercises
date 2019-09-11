@@ -1,0 +1,34 @@
+<h1>Kuntotasolaskuri</h1>
+
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nimi</th>
+      <th scope="col">Hölkkä</th>
+      <th scope="col">Hiihto</th>
+      <th scope="col">Kävely</th>
+      <th scope="col">Kuntopisteet</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{ nimi }}</th>
+      <td>{{ holkka }} km</td>
+      <td>{{ hiihto }} km</td>
+      <td>{{ kavely }} km</td>
+      <td>{{ kuntopisteet }}</td>
+    </tr>
+  </tbody>
+</table>
+<h3>
+    {% if kuntopisteet > 100 %}
+        Sinulla on hyvä kunto!
+    {% elseif kuntopisteet > 40 %}
+        Sinulla on tyydyttävä kunto
+    {% else %}
+        Kehotan sinut ulkoilua enemmän!
+    {% endif %}
+</h3>
+</div>

@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 //Tarvitaan näkymä varten
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-// Harjoitukset Symfony 7, 8, 9
+// Harjoitukset Symfony 7, 8, 9, 10, 11, 12, 13
 
 class Esimerkit2Controller extends AbstractController{
     // Kontrollerit tulee tänne
@@ -23,6 +23,18 @@ class Esimerkit2Controller extends AbstractController{
         $nettopalkka = $bruttopalkka * 0.7;
 
         return $this->render('esimerkit/laskePalkka.html.twig',[
+            'nettopalkka' => $nettopalkka,
+            'bruttopalkka' => $bruttopalkka
+            ]);
+    }
+
+    /**
+    * @Route("/esimerkki/palkka/{bruttopalkka}")
+    */
+    public function laskePalkkaSyoto($bruttopalkka){
+        $nettopalkka = $bruttopalkka * 0.7;
+
+        return $this->render('esimerkit/laskePalkkaSyoto.html.twig',[
             'nettopalkka' => $nettopalkka,
             'bruttopalkka' => $bruttopalkka
             ]);
@@ -146,6 +158,43 @@ class Esimerkit2Controller extends AbstractController{
             'viikko' => $mittausViikko,
             'tekija' => $tekija
             ]);
+    }
+
+    /**
+     * @Route("/esimerkki/uutiset/{slug}")
+     */
+    public function nayta($slug) {
+        // Muuttujat
+        $kommentit = [
+            'Muropaketin arvostelun mukaan Control on viiden tähden täysosuma!',
+            'Apple Arcade toimii iPhoneilla ja iPadeillä sekä Macilla ja Apple TV:llä!',
+            'PlayStation Blog on jälleen listannut viikon suurimmat PS4-julkaisut!',
+        ];
+
+        return $this->render('esimerkit/nayta.html.twig',[
+            'otsikko'       => $slug,
+            'kommentit'     => $kommentit
+        ]);
+    }
+    /**
+     * @Route("/esimerkki/kuntopisteet")
+     */
+    public function kuntopisteet() {
+        $nimi = "Arvid Lee";
+        $holkka = 10;
+        $hiihto = 5;
+        $kavely = 20;
+        $kuntopisteet = $holkka * 4 + $hiihto * 2 + $kavely;
+       
+
+        return $this->render('esimerkit/kuntopisteet.html.twig',[
+            'nimi'       => $nimi,
+            'hiihto'     => $hiihto,
+            'holkka'     => $holkka,
+            'kavely'     => $kavely,
+            'kuntopisteet' => $kuntopisteet
+        ]);
+
     }
 }
 

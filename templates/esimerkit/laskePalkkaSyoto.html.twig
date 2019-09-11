@@ -1,0 +1,8 @@
+<h1>Bruttopalkka {{ bruttopalkka }} €</h1>
+<h2>
+    {% if bruttopalkka <= 0 %}
+        Palkka ei saa olla nolla tai negatiivinen!
+    {% else %}
+        Bruttopalkkasi on {{ bruttopalkka }} € ja nettopalkkasi on <strong> {{ nettopalkka}} €.</strong>
+    {% endif %}
+</h2>
