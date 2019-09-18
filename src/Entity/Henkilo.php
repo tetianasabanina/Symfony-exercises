@@ -29,7 +29,7 @@ class Henkilo {
     }
 
     public function setKirjauspvm(\DateTimeInterface $kirjauspvm) {
-        $this->email = $email;
+        $this->kirjauspvm = $kirjauspvm;
     }
     public function getKirjauspvm() {
         return $this->kirjauspvm;

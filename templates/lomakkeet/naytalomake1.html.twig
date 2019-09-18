@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container form-signin text-center">
+       
+            <div class="card" style="width:400px">
+            <img class="card-img-top" src="../img/cat_paw.png" alt="Profiilikuva" style="width:100%">
+            <div class="card-body">
+                <h4 class="card-title">{{ henkilo.etunimi }} {{ henkilo.sukunimi }}
+                <br> {{ henkilo.email}}</h4>
+                <p class="card-text">Hei, opiskelen tällä hetkellä ohjelmointia koodikoulussa</p>
+                <a href="#" class="btn btn-success">Lue lisää...</a>
+            </div>
+        </div>
+        <p class="mt-5 mb-3 text-muted">{{ henkilo.kirjauspvm | date('d-m-Y') }}</p>
+    </div>
+{% endblock %}
