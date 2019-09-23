@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container form-signin text-center">
+       
+            <div class="card" style="width:400px">
+            
+            <div class="card-body">
+                <h4 class="card-title">{{ freezer.operative }} {{ freezer.week }}</h4>
+                
+                
+                <p>walking {{ kuntopisteet.walking}} km </p>
+                
+                <p class="card-text">Average1: {{ average1 }}</p>
+                <p class="card-text">Average2: {{ average1 }}</p>
+
+                
+                <a href="{{path('exit')}}" class="btn btn-success">Exit</a>
+            </div>
+        </div>
+        
+    </div>
+{% endblock %}

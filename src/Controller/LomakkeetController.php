@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Henkilo;
 use App\Entity\Kuntopisteet;
+use App\Entity\Freezing;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -68,6 +70,7 @@ class LomakkeetController extends AbstractController {
         return new Response("<h1>Valmista</h1>");
     }
 
+    // Kuntopisteet Symfony lomakeharjoitus2
      /**
     * @Route("lomakkeet/kuntopisteet", name="kuntopisteet")
     */
@@ -108,7 +111,6 @@ class LomakkeetController extends AbstractController {
                     'kuntopisteet' =>$kuntopisteet,
                     'score' => $score,
                 ]);
-                
 
             }
             
@@ -118,13 +120,70 @@ class LomakkeetController extends AbstractController {
             'form1'=> $form->createView()
         ]);
     }
+    // Additional for the Kuntopisteet
     /**
-     * @Route("lomakkeet/kunto", name="kunto")
+     * @Route("lomakkeet/exit", name="exit")
      */
-
     public function yourCondition () {
         return new Response("<h1>Done!</h1>");
     }
+
+    // Pakkasasteet Symfony Lomakeharjouitus2
+    /**
+    * @Route("lomakkeet/freezing", name="freezing")
+    */
+    /*public function freezing(Request $request) {
+        $freezer = new Freezing();
+       
+        $form = $this->createFormBuilder($freezer)
+            ->setAction($this->generateUrl('freezing'))
+            ->add('Operative', null, ['required' => false])
+            ->add('Week', TextType::class)
+            ->add('Arr_temperature', CollectionType::class)
+            ->add('Save', SubmitType::class, ['label' => 'Sent',
+            'attr'=>array('class' => 'btn-success mt-3')])
+            ->getForm();
+
+            // Tähän tulee lomakkeen käsittely
+            $form->handleRequest($request);
+            // Painettiinko lähetä painiketta
+            if($form->isSubmitted()) {
+                // Kyllä, joten käsitellään lomaketiedot
+                //var_dump($freezer->getRunning());
+                //Talletetaan lomaketiedot kuntopisteet-olioon
+                $freezer = $form->getdata();
+                $temperature = $arr_temperature->getTemp();
+                foreach ($freezer as $degree) {
+                    if ($degree < 0) {
+                        $summa += $degree;
+                        $freezDays += 1;
+                    }
+                }
+                // Lasketaan pakkauspäivien keskiarvo yhdellä desimaalilla
+                $average1 = number_format(($summa / $freezDays), 1);
+        
+                // lasketaan koko viikon keskilämpötilä yhdellä desimaalilla
+                $average2 = number_format(array_sum($freezer) / count($freezer),1);
+                
+                // return new Response($freezer->getOperative());
+                // return new JsonResponse((Array)$freezer);
+
+                //return $this->redirectToRoute('valmis');
+
+                return $this->render('lomakkeet/showfreezer.html.twig', [
+                    'freezer' =>$freezer,
+                    'average1' => $average1,
+                    'average2' => $average2,
+                ]);
+
+            }
+            
+
+        // Luo näkymän, joka näyttää lomakkeen
+        return $this->render("lomakkeet\setfreezer.html.twig", [
+            'form1'=> $form->createView()
+        ]);
+    }*/
 }
 
 ?>
