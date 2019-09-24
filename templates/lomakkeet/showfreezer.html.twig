@@ -4,15 +4,35 @@
     <div class="container form-signin text-center">
        
             <div class="card" style="width:400px">
-            
-            <div class="card-body">
-                <h4 class="card-title">{{ freezer.operative }} {{ freezer.week }}</h4>
-                
-                
-                <p>walking {{ kuntopisteet.walking}} km </p>
-                
-                <p class="card-text">Average1: {{ average1 }}</p>
-                <p class="card-text">Average2: {{ average1 }}</p>
+                <div class="card-body">
+                <h4 class="card-title">Operative: {{ freezing.operative }}, Week: {{ freezing.week }}</h4>
+                <h5> Week's temperature: </h5>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Mo</th>
+                            <th scope="col">Tue</th>
+                            <th scope="col">We</th>
+                            <th scope="col">Thu</th>
+                            <th scope="col">Fr</th>
+                            <th scope="col">Sat</th>
+                            <th scope="col">Sun</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ freezing.temperature.monday }}<sup>o</sup>C</td>
+                            <td>{{ freezing.temperature.tuesday }}<sup>o</sup>C</td>
+                            <td>{{ freezing.temperature.wednesday }}<sup>o</sup>C</td>
+                            <td>{{ freezing.temperature.thursday }}<sup>o</sup>C</td>
+                            <td>{{ freezing.temperature.friday }}<sup>o</sup>C</td>
+                            <td>{{ freezing.temperature.saturday }}<sup>o</sup>C</td>
+                            <td>{{ freezing.temperature.sunday }}<sup>o</sup>C</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="card-text">Average T on frost days: {{ average1 }}<sup>o</sup>C</p>
+                <p class="card-text">Average week's T: {{ average2 }}<sup>o</sup>C</p>
 
                 
                 <a href="{{path('exit')}}" class="btn btn-success">Exit</a>

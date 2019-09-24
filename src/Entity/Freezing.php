@@ -4,7 +4,15 @@ namespace App\Entity;
 class Freezing {
     private $operative;
     private $week;
-    private $arr_temperature;
+    private $temperature = [
+        'monday' => '',
+        'tuesday' => '',
+        'wednesday' => '',
+        'thursday' => '',
+        'friday' => '',
+        'saturday' => '',
+        'sunday' => ''
+    ];
     
     public function setOperative($operative) {
         $this->operative = $operative;
@@ -19,11 +27,11 @@ class Freezing {
     public function getWeek() {
         return $this->week;
     }
-    public function setTemp($arr_temperature) {
-        $this->arr_temperature = $arr_temperature;
+    public function setTemperature($temperature) {
+        $this->temperature = $temperature;
     }
-    public function getTemp() {
-        return $this->arr_temperature;
+    public function getTemperature() {
+        return $this->temperature;
     }
 
 

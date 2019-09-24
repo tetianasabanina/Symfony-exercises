@@ -132,15 +132,46 @@ class LomakkeetController extends AbstractController {
     /**
     * @Route("lomakkeet/freezing", name="freezing")
     */
-    /*public function freezing(Request $request) {
+    public function freezing(Request $request) {
         $freezer = new Freezing();
-       
+        $summ = 0;
+        $freezDays = 0;
+        $average1 = 0;
+        $average2 = 0;
+
         $form = $this->createFormBuilder($freezer)
             ->setAction($this->generateUrl('freezing'))
             ->add('Operative', null, ['required' => false])
             ->add('Week', TextType::class)
-            ->add('Arr_temperature', CollectionType::class)
-            ->add('Save', SubmitType::class, ['label' => 'Sent',
+            ->add('Monday', TextType::class, [
+                'label' => 'Mo',
+                'property_path' => 'temperature[monday]',
+            ])
+            ->add('Thuesday', TextType::class, [
+                'label' => 'Tue',
+                'property_path' => 'temperature[tuesday]',
+            ])
+            ->add('Wednesday', TextType::class, [
+                'label' => 'We',
+                'property_path' => 'temperature[wednesday]',
+            ])
+            ->add('Thursday', TextType::class, [
+                'label' => 'Thu',
+                'property_path' => 'temperature[thursday]',
+            ])
+            ->add('Friday', TextType::class, [
+                'label' => 'Fr',
+                'property_path' => 'temperature[friday]',
+            ])
+            ->add('Saturday', TextType::class, [
+                'label' => 'Sat',
+                'property_path' => 'temperature[saturday]',
+            ])
+            ->add('Sunday', TextType::class, [
+                'label' => 'Su',
+                'property_path' => 'temperature[sunday]',
+            ])
+            ->add('Save', SubmitType::class, ['label' => 'Submit',
             'attr'=>array('class' => 'btn-success mt-3')])
             ->getForm();
 
@@ -149,41 +180,42 @@ class LomakkeetController extends AbstractController {
             // Painettiinko lähetä painiketta
             if($form->isSubmitted()) {
                 // Kyllä, joten käsitellään lomaketiedot
-                //var_dump($freezer->getRunning());
-                //Talletetaan lomaketiedot kuntopisteet-olioon
-                $freezer = $form->getdata();
-                $temperature = $arr_temperature->getTemp();
-                foreach ($freezer as $degree) {
+                //var_dump($freezer->getTemperature());
+                //Talletetaan lomaketiedot freezing-olioon
+                $freezing = $form->getdata();
+                $temperature = $freezing->getTemperature();
+                foreach ($temperature as $degree) {
                     if ($degree < 0) {
-                        $summa += $degree;
+                        $summ += $degree;
                         $freezDays += 1;
                     }
                 }
-                // Lasketaan pakkauspäivien keskiarvo yhdellä desimaalilla
-                $average1 = number_format(($summa / $freezDays), 1);
+                
+                // Lasketaan pakkaspäivien keskiarvo yhdellä desimaalilla
+                $average1 = number_format(($summ / $freezDays), 1);
         
                 // lasketaan koko viikon keskilämpötilä yhdellä desimaalilla
-                $average2 = number_format(array_sum($freezer) / count($freezer),1);
+                $average2 = number_format(array_sum($temperature) / count($temperature),1);
                 
                 // return new Response($freezer->getOperative());
-                // return new JsonResponse((Array)$freezer);
+                // return new JsonResponse((Array)$freezing);
 
                 //return $this->redirectToRoute('valmis');
 
                 return $this->render('lomakkeet/showfreezer.html.twig', [
-                    'freezer' =>$freezer,
+                    'freezing' =>$freezing,
                     'average1' => $average1,
                     'average2' => $average2,
                 ]);
 
             }
-            
+                    
 
         // Luo näkymän, joka näyttää lomakkeen
         return $this->render("lomakkeet\setfreezer.html.twig", [
             'form1'=> $form->createView()
         ]);
-    }*/
+    }
 }
 
 ?>
