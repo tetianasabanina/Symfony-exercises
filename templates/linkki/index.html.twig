@@ -25,9 +25,11 @@
                 <td>{{ linkki.avainsana }}</td>
                 <td>{{ linkki.kuvaus }}</td>
                 <td>
-                    <a href="#" class="btn btn-dark">Näytä</a>
-                    <a href="#" class="btn btn-success">Muokkaa</a>
-                    <button class="btn btn-danger">Poista</button>
+                    <a href="{{ path('linkki_nayta', {id: linkki.id}) }}" class="btn btn-dark">Näytä</a>
+                    <!-- <a href="{{ path('linkki_muokkaa', {id: linkki.id}) }}" class="btn btn-success">Muokkaa</a> -->
+                    <button muokkaa-linkki="{{ linkki.id }}" class="btn btn-success muokkaa-linkki">Muokkaa</button>
+                    <!-- <a href="{{ path('linkki_poista', {id: linkki.id}) }}" class="btn btn-success">Poista</a>-->
+                    <button poista-linkki="{{ linkki.id }}" class="btn btn-danger poista-linkki">Poista</button>
                 </td>
                 </tr>
             {% endfor %}
@@ -36,3 +38,8 @@
     </table>
  
  {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="js/main.js"></script>
+{% endblock %}
